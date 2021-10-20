@@ -9,7 +9,6 @@ global PASSWORD
 
 def get_password(password_len=8, has_lower=True, has_upper=True, has_special=False):
     available_cases = string.digits
-    print(available_cases)
     if has_lower is True:
         available_cases += string.ascii_lowercase
     if has_upper is True:
