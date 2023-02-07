@@ -1,10 +1,7 @@
-import tkinter
 import tkinter as tk
-from tkinter import ttk
-import random
 import pyperclip
-import string
 import gen
+import os
 
 root = tk.Tk()
 
@@ -12,6 +9,24 @@ password_len_tkvar = tk.IntVar()
 has_lower_value = tk.BooleanVar()
 has_upper_value = tk.BooleanVar()
 has_special_value = tk.BooleanVar()
+
+
+def file_check_lines():
+    with open(".\pwd_vault.txt", 'r') as f:
+        count = len(f.readlines())
+    return count
+
+
+def check_vault():
+    pwd_vault = "pwd_vault.txt"
+    if os.path.isfile(pwd_vault):
+        # print(f'found {pwd_vault} at {os.path.dirname(__file__)} and it is {check_vault()}')
+        print(f"Found {pwd_vault} at {os.path.dirname(os.path.abspath(pwd_vault))} and it is")
+    else:
+        with open("pwd_vault.txt", 'x') as f:
+            pass
+        print("not found")
+    """todo: make this a encrypted mysql or other sql base"""
 
 
 def call_password():
@@ -26,9 +41,11 @@ def call_password():
 
 
 def get_password_len():
-    print(password_len_tkvar.get())
+    # print(password_len_tkvar.get())
     return int(password_len_tkvar.get())
 
+
+check_vault()
 
 menubar = tk.Menu(root)
 file = tk.Menu(menubar, tearoff=0)
