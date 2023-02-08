@@ -12,7 +12,7 @@ has_special_value = tk.BooleanVar()
 
 
 def file_check_lines():
-    with open(".\pwd_vault.txt", 'r') as f:
+    with open("pwd_vault.txt", 'r') as f:
         count = len(f.readlines())
     return count
 
@@ -21,7 +21,7 @@ def check_vault():
     pwd_vault = "pwd_vault.txt"
     if os.path.isfile(pwd_vault):
         # print(f'found {pwd_vault} at {os.path.dirname(__file__)} and it is {check_vault()}')
-        print(f"Found {pwd_vault} at {os.path.dirname(os.path.abspath(pwd_vault))} and it is")
+        print(f"Found {pwd_vault} at {os.path.dirname(os.path.abspath(pwd_vault))} and it is {file_check_lines()}")
     else:
         with open("pwd_vault.txt", 'x') as f:
             pass
